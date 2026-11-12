@@ -38,7 +38,26 @@
   </div>
 
   <script>
-    /*
+    const products = [
+    { id: 1, name: "노트북", price: 1200000, stock: 5 },
+    { id: 2, name: "마우스", price: 35000, stock: 0 },
+    { id: 3, name: "키보드", price: 89000, stock: 12 },
+    { id: 4, name: "모니터", price: 350000, stock: 3 }
+];
+
+// ① 총 재고 금액 (가격 * 재고의 총합)
+const totalInventoryPrice = products.reduce((sum, p) => sum + (p.price * p.stock), 0);
+
+// ② 재고가 0인 상품 이름
+const outOfStockProducts = products.filter(p => p.stock === 0).map(p => p.name);
+
+// ③ 가장 비싼 상품 (원본 배열을 훼손하지 않도록 스프레드 연산자 [...]로 복사 후 정렬)
+const mostExpensive = [...products].sort((a, b) => b.price - a.price)[0];
+
+// 결과 출력하기
+console.log(`① 총 재고 금액: ${totalInventoryPrice.toLocaleString()}원`);
+console.log(`② 재고가 0인 상품 이름: ${outOfStockProducts.join(", ")}`);
+console.log(`③ 가장 비싼 상품: ${mostExpensive.name} (${mostExpensive.price.toLocaleString()}원)`);/*
     실습 4 · 심화
 
     문제: 상품 배열에서 ① 총 재고 금액 ② 재고가 0인 상품 이름 ③ 가장 비싼 상품을 구해 출력하세요. 상품은 id·name·price·stock을 가집니다.
