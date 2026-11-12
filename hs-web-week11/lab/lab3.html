@@ -38,7 +38,20 @@
   </div>
 
   <script>
-    /*
+   const students = [
+    { name: "김철수", year: 1, score: 85 },
+    { name: "이영희", year: 2, score: 90 },
+    { name: "박민수", year: 1, score: 78 },
+    { name: "정지영", year: 3, score: 92 }
+];
+
+// 메서드 체이닝을 이용해 1학년만 골라 이름만 뽑은 뒤 쉼표로 잇기
+const result = students
+    .filter(student => student.year === 1)
+    .map(student => student.name)
+    .join(", ");
+
+console.log(result); /*
     실습 3 · 응용
 
     문제: 학생 객체 배열을 만들고(이름·학년·점수 3명 이상), 1학년만 골라 이름만 뽑은 뒤 쉼표로 이어 출력하세요.
